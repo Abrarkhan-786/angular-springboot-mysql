@@ -1,0 +1,20 @@
+table {
+    width: 100%;
+  }
+  .heading{
+    display: inline-block;
+    background: blueviolet; 
+    padding:10px;
+    color:white;
+    box-shadow: 2px ,2px, 5px grey;
+    border-radius: 4px;
+    text-align: center;
+    margin-top:1rem;
+    justify-content: center;
+   
+}
+  
+  
+  
+  
+  

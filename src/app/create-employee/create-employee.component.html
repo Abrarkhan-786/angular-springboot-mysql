@@ -1,0 +1,71 @@
+<div class="text-center  p-4 w-50 m-auto">
+    <h1 class="mt-5 heading">{{title}}</h1>
+    <form [formGroup]="employeeForm">
+        <div class="row">
+            <mat-form-field appearance="outline" floatLabel="always" class="pr-4" class="col-6">
+                <mat-label>Id</mat-label>
+                <input matInput placeholder="Id" name="id" formControlName="id" [readonly]="true">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" floatLabel="always" class="pr-4" class="col-6">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Name" name="name" formControlName="name">
+                <mat-error *ngIf="employeeForm.get('name')?.hasError('required')">
+                    {{MESSAGE.NAME_REQUIRED}}
+                </mat-error>
+                <mat-error *ngIf="employeeForm.get('name')?.hasError('pattern')">
+                    {{MESSAGE.NAME_PATTERN}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline" floatLabel="always" class="pr-4" class="col-6">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="email" name="email" formControlName="email">
+                <mat-error *ngIf="employeeForm.get('email')?.hasError('requird')">
+                    {{MESSAGE.EMAIL_REQUIRED}}
+                </mat-error>
+                <mat-error *ngIf="employeeForm.get('email')?.hasError('pattern')">
+                    {{MESSAGE.EMAIL_PATTAERN}}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" floatLabel="always" class="pr-4" class="col-6">
+                <mat-label>Department</mat-label>
+                <input matInput placeholder="Department" name="department" formControlName="department">
+                <mat-error *ngIf="employeeForm.get('department')?.hasError('requird')">
+                    {{MESSAGE.DEPARTMENT_REQUIRED}}
+                </mat-error>
+                <mat-error *ngIf="employeeForm.get('department')?.hasError('pattern')">
+                    {{MESSAGE.DEPARTMENT_PATTERN}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline" floatLabel="always" class="pr-4" class="col-6">
+                <mat-label>Salary</mat-label>
+                <input matInput placeholder="Salary" name="salary" formControlName="salary">
+                <mat-error *ngIf="employeeForm.get('salary')?.hasError('requird')">
+                    {{MESSAGE.SALARY_REQUIRED}}
+                </mat-error>
+                <mat-error *ngIf="employeeForm.get('salary')?.hasError('pattern')">
+                    {{MESSAGE.SALRY_PATTERN}}
+                </mat-error>
+            </mat-form-field>
+
+            <div class="pt-2 pl-3">
+                <mat-label>Is Employee Senior</mat-label>
+                <mat-slide-toggle class="ml-2" [checked]="true" name="isSenior" formControlName="isSenior">
+                </mat-slide-toggle>
+            </div>
+        </div>
+        <div class="d-flex justify-content-start">
+            <div class="">
+                <button mat-raised-button color="primary" (click)="save()">Save</button>
+            </div>
+            <div class="ml-3">
+                <button mat-raised-button color="warn" type="button" (click)="resetForm()">Reset</button>
+            </div>
+        </div>
+    </form>
+</div>
