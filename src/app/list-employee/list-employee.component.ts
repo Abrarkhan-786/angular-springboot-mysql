@@ -17,9 +17,9 @@ import { DeleteBoxComponent } from '../pop-up/delete-box/delete-box.component';
 })
 export class ListEmployeeComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'email', 'salary' ,'department','Action'];
-  dataSource!: MatTableDataSource<Employee>;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  //@ViewChild(MatSort) sort!: MatSort;
+  dataSource!: MatTableDataSource<any>;
+  @ViewChild(MatPaginator, {static: false}) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   instruction:string='Do you want delete record?'
   confirmation:any;
   employees!:any;
@@ -49,12 +49,12 @@ export class ListEmployeeComponent implements OnInit {
 
    getAllEmployeeList(){
     this.service.getAllEmployeeList().subscribe((data)=>{
-      if(data!=null && data!=undefined &&data.response!=null && data.status==HttpStatus.SUCCESS ){
+      if(data!=null && data!=undefined && data.response!=null && data.status==HttpStatus.SUCCESS ){
         this.employees=data.response;
         this.dataSource = new MatTableDataSource(data.response);
-        this.dataSource.paginator == this.paginator;
+        this.dataSource.paginator =this.paginator;
+        this.dataSource.sort = this.sort;
         this._changeDetectorRef.detectChanges();
-        //this.dataSource.sort = this.sort;
         //alert(JSON.stringify(this.employees))
 
       }
@@ -100,9 +100,6 @@ export class ListEmployeeComponent implements OnInit {
       }
     });
   }
-
-  
-
   backToList(){
     this.router.navigate(['addEmployee']);
   }
