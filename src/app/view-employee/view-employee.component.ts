@@ -45,7 +45,15 @@ export class ViewEmployeeComponent implements OnInit {
     this.service.findEmployeeById(this.param).subscribe((data)=>{
       if(data!=null && data!=undefined && data.response!=null && data.status==HttpStatus.SUCCESS){
          this.employee=data.response;
-          
+         this.employeeForm.patchValue({
+          'id':String(this.employee.id),
+          'name':this.employee.name,
+          'email':this.employee.email,
+          'department':this.employee.department,
+          'salary':String(this.employee.salary),
+          'isSenior':String(this.employee.isSenior)
+         });
+        this.employeeForm.disable();
       
       }else{
         this.snackbarService.openErrorSnackBar(data.message);
