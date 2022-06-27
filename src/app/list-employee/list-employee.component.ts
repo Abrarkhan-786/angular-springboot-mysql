@@ -72,10 +72,10 @@ export class ListEmployeeComponent implements OnInit {
 
 
   editEmployee(id:number){
-   this.router.navigate(['editEmployee'],{queryParams:{param:id}})
+   this.router.navigate(['editEmployee'],{queryParams:{param:id},skipLocationChange:true})
   }
   viewEmployee(id:number){
-    this.router.navigate(['viewEmployee'],{queryParams:{param:id}})
+    this.router.navigate(['viewEmployee'],{queryParams:{param:id},skipLocationChange:true})
   }
 
   deleteEmployee(id:number){
