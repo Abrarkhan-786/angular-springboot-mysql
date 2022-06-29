@@ -5,6 +5,7 @@ export class Employee{
     email!:string|null;
     salary!:number|null;
     isSenior!:boolean;
+    document!:File;
 
 
 }

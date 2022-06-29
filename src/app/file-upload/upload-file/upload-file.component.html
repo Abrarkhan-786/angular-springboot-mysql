@@ -1,0 +1,15 @@
+<div class="form-container">
+    <h1 class="mt-5 heading">File Upload Demo</h1>
+    <form [formGroup]="myForm" (ngSubmit)="upload()">
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Select File</label>
+            <input (change)="onFileChange($event)" class="form-control" type="file" id="formFile" formControlName="file">
+        </div>
+        <div >
+            <img [src]="getSantizeUrl(imageSrc)" *ngIf="imageSrc" style="height: 200px; width:350px">
+        </div>
+        <div class="text-center mt-2">
+            <button type="submit" class="btn btn-primary ">Submit</button>
+        </div>
+      </form>
+</div>

@@ -22,13 +22,14 @@ export class CreateEmployeeComponent implements OnInit {
     private snackbarService:SnackbarService,
 
   ) { }
-
+  model=new Employee();
     employeeForm= new FormGroup({
     id:new FormControl('',[]),
     name:new FormControl('',[Validators.required,Validators.pattern(regix_patterns.ONLY_ALPHABETS)]),
     email:new FormControl('',[Validators.required,Validators.pattern(regix_patterns.EMAIL)]),
     department:new FormControl('',[Validators.required,Validators.pattern(regix_patterns.ONLY_ALPHA_NUMERIC_WITH_SPACE)]),
     salary:new FormControl('',[Validators.required,Validators.pattern(regix_patterns.ONLY_NUMERIC_FLOAT)]),
+    document:new FormControl('',[Validators.required]),
     isSenior:new FormControl('',[])
   })
 
@@ -40,25 +41,44 @@ export class CreateEmployeeComponent implements OnInit {
       this.employeeForm.markAllAsTouched();
       return;
     }
-    const model=new Employee();
-    model.id=this.employeeForm.value.id?Number(this.employeeForm.value.id):null;
-    model.name=(this.employeeForm.value.name)?this.employeeForm.value.name:null;
-    model.department=(this.employeeForm.value.department)?this.employeeForm.value.department:null;
-    model.salary=(this.employeeForm.value.salary)?Number(this.employeeForm.value.salary):null
-    model.email=(this.employeeForm.value.email)?this.employeeForm.value.email:null;
-    model.isSenior=Boolean(this.employeeForm.value.isSenior)
-    console.log(model)
+    
+    this.model.id=this.employeeForm.value.id?Number(this.employeeForm.value.id):null;
+    this.model.name=(this.employeeForm.value.name)?this.employeeForm.value.name:null;
+    this.model.department=(this.employeeForm.value.department)?this.employeeForm.value.department:null;
+    this.model.salary=(this.employeeForm.value.salary)?Number(this.employeeForm.value.salary):null
+    this.model.email=(this.employeeForm.value.email)?this.employeeForm.value.email:null;
+    this.model.isSenior=Boolean(this.employeeForm.value.isSenior)
+    console.log(this.model)
 
-    this.service.saveEmployee(model).subscribe((data) => { 
-      if (data != null && data != undefined && data.status == HttpStatus.SUCCESS) {
-          this.snackbarService.openSucessSnackBar(data.message,this.backurl)
-           }else{
-            this.snackbarService.openErrorSnackBar(data.message)
-           }        
-     });
+    // this.service.saveEmployee(this.model).subscribe((data) => { 
+    //   if (data != null && data != undefined && data.status == HttpStatus.SUCCESS) {
+    //       this.snackbarService.openSucessSnackBar(data.message,this.backurl)
+    //        }else{
+    //         this.snackbarService.openErrorSnackBar(data.message)
+    //        }        
+    //  });
   }
 
   resetForm(){
     this.employeeForm.reset();
+  }
+  getFile(e:any){
+    const allowedExtension:{[key:string]:any}={"png":true,"jpeg":true,"docx":true}
+    let extension:boolean=false
+    console.log(e.target.files);
+    if(e.target.files[0].size/1024/1024>10){
+      alert("10 mb file is allowed");
+      return;
+    }
+      let name=e.target.files[0].name.split(".").pop();
+      extension=allowedExtension[name];
+      if(!extension){
+        alert("Please upload "+Object.keys(allowedExtension)+ "upload file");
+        return;
+      }
+
+      this.employeeForm.controls["document"].setValue(e.target.files[0].name);
+      this.model.document=e.target.files[0];
+
   }
 }

@@ -22,10 +22,6 @@ import { MatSortModule } from '@angular/material/sort';
 import { DeleteBoxComponent } from './pop-up/delete-box/delete-box.component';
 import {MatDialogModule} from '@angular/material/dialog';
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +31,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     EditEmployeeComponent,
     HeaderComponent,
     FooterComponent,
-    DeleteBoxComponent
+    DeleteBoxComponent,
+    
   ],
   imports: [
     BrowserModule,

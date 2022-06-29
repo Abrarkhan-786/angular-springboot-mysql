@@ -12,6 +12,10 @@ const routes: Routes = [
   { path: 'addEmployee', component: CreateEmployeeComponent},
   { path: 'editEmployee', component: EditEmployeeComponent },
   { path: 'viewEmployee', component: ViewEmployeeComponent},
+  {
+    path      : 'fileUploading',
+    loadChildren: () => import('./file-upload/upload-file/upload-file.module').then(m => m.UploadFileModule),
+},
 ];
 
 @NgModule({
