@@ -18,8 +18,22 @@ export class UploadFileService {
   }
 
 
-  downloadAttachment(id: number):Observable<any>{
+  downloadAttachment(id: string):Observable<any>{
     const url = this.backenedUrl + 'attachment/downloadAttachment/' + id;
+    return this.http.get(url)
+  }
+
+  getAllAttachment():Observable<any>{
+    const url = this.backenedUrl + 'attachment/getAllAttachment';
+    return this.http.get(url)
+  }
+  deleteAttachment(id:string):Observable<any>{
+    const url = this.backenedUrl + 'attachment/deleteAttachment/'+id;
+    return this.http.get(url)
+  }
+ 
+  getAttachment(id:string):Observable<any>{
+    const url = this.backenedUrl + 'attachment/getAttachment/'+id;
     return this.http.get(url)
   }
 }

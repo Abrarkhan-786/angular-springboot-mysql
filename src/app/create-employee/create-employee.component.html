@@ -74,7 +74,7 @@
                 <button mat-raised-button color="primary" (click)="save()">Save</button>
             </div>
             <div class="ml-3">
-                <button mat-raised-button color="warn" type="button" (click)="resetForm()">Reset</button>
+                <button mat-raised-button color="warn" type="button" [disabled]="employeeForm.invalid" (click)="resetForm()">Reset</button>
             </div>
         </div>
     </form>

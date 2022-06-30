@@ -29,7 +29,7 @@ export class CreateEmployeeComponent implements OnInit {
     email:new FormControl('',[Validators.required,Validators.pattern(regix_patterns.EMAIL)]),
     department:new FormControl('',[Validators.required,Validators.pattern(regix_patterns.ONLY_ALPHA_NUMERIC_WITH_SPACE)]),
     salary:new FormControl('',[Validators.required,Validators.pattern(regix_patterns.ONLY_NUMERIC_FLOAT)]),
-    document:new FormControl('',[Validators.required]),
+    document:new FormControl('',[]),
     isSenior:new FormControl('',[])
   })
 
@@ -78,7 +78,7 @@ export class CreateEmployeeComponent implements OnInit {
       }
 
       this.employeeForm.controls["document"].setValue(e.target.files[0].name);
-      this.model.document=e.target.files[0];
+      //this.model.document=e.target.files[0];
 
   }
 }

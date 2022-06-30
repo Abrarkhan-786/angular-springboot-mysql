@@ -21,6 +21,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { DeleteBoxComponent } from './pop-up/delete-box/delete-box.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { RefreshComponent } from './common/refresh/refresh.component';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     HeaderComponent,
     FooterComponent,
     DeleteBoxComponent,
+    RefreshComponent,
     
   ],
   imports: [
@@ -48,10 +51,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatDialogModule
+    MatDialogModule,
+    
 
-    
-    
   ],
   providers: [],
   bootstrap: [AppComponent]
