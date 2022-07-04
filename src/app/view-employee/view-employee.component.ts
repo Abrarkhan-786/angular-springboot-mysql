@@ -35,7 +35,7 @@ export class ViewEmployeeComponent implements OnInit {
     email:new FormControl('',[Validators.required,Validators.pattern(regix_patterns.EMAIL)]),
     department:new FormControl('',[Validators.required,Validators.pattern(regix_patterns.ONLY_ALPHA_NUMERIC_WITH_SPACE)]),
     salary:new FormControl('',[Validators.required,Validators.pattern(regix_patterns.ONLY_NUMERIC_FLOAT)]),
-    isSenior:new FormControl('',[])
+    senior:new FormControl(true,[])
 
   })
   getDetail(){
@@ -51,7 +51,7 @@ export class ViewEmployeeComponent implements OnInit {
           'email':this.employee.email,
           'department':this.employee.department,
           'salary':String(this.employee.salary),
-          'isSenior':String(this.employee.isSenior)
+          'senior':this.employee.senior
          });
         this.employeeForm.disable();
       

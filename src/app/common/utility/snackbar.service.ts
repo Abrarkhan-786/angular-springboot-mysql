@@ -33,7 +33,7 @@ export class SnackbarService {
       duration: 5000,
       horizontalPosition: "center",
       verticalPosition: "top",
-      panelClass: ['green-snackbar'],
+      panelClass: ['red-snackbar'],
      });
 
      snackBarRef.afterDismissed().subscribe(() => {

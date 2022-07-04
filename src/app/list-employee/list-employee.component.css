@@ -29,6 +29,16 @@ table {
 
    
 }
+
+input[type=file]{
+  width: 100%; 
+  padding: 3px 4px;
+  /* margin: 8px 0; */
+  /* display: inline-block; */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
   
   
   

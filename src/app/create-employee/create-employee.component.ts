@@ -30,7 +30,7 @@ export class CreateEmployeeComponent implements OnInit {
     department:new FormControl('',[Validators.required,Validators.pattern(regix_patterns.ONLY_ALPHA_NUMERIC_WITH_SPACE)]),
     salary:new FormControl('',[Validators.required,Validators.pattern(regix_patterns.ONLY_NUMERIC_FLOAT)]),
     document:new FormControl('',[]),
-    isSenior:new FormControl('',[])
+    senior:new FormControl(true,[])
   })
 
   ngOnInit(): void {
@@ -47,16 +47,16 @@ export class CreateEmployeeComponent implements OnInit {
     this.model.department=(this.employeeForm.value.department)?this.employeeForm.value.department:null;
     this.model.salary=(this.employeeForm.value.salary)?Number(this.employeeForm.value.salary):null
     this.model.email=(this.employeeForm.value.email)?this.employeeForm.value.email:null;
-    this.model.isSenior=Boolean(this.employeeForm.value.isSenior)
+    this.model.senior=this.employeeForm.value.senior
     console.log(this.model)
 
-    // this.service.saveEmployee(this.model).subscribe((data) => { 
-    //   if (data != null && data != undefined && data.status == HttpStatus.SUCCESS) {
-    //       this.snackbarService.openSucessSnackBar(data.message,this.backurl)
-    //        }else{
-    //         this.snackbarService.openErrorSnackBar(data.message)
-    //        }        
-    //  });
+    this.service.saveEmployee(this.model).subscribe((data) => { 
+      if (data != null && data != undefined && data.status == HttpStatus.SUCCESS) {
+          this.snackbarService.openSucessSnackBar(data.message,this.backurl)
+           }else{
+            this.snackbarService.openErrorSnackBar(data.message)
+           }        
+     });
   }
 
   resetForm(){

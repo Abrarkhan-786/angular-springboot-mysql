@@ -4,7 +4,7 @@ export class Employee{
     department!:string | null;
     email!:string|null;
     salary!:number|null;
-    isSenior!:boolean;
+    senior!:boolean| null |undefined;
     document!:File;
 
 

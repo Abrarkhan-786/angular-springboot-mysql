@@ -37,4 +37,14 @@ export class EmployeeService {
     return this.http.get(url)
   }
 
+  downloadEmployeeReport():Observable<any> {
+    const url = this.backenedUrl + 'employee/downloadEmployeeReport';
+    return this.http.get(url,{  responseType: 'blob'  })
+  }
+ // { responseType: ResponseContentType.Blob }
+
+ uploadEmployeeExcel(file:any):Observable<any> {
+  const url = this.backenedUrl + 'employee/uploadEmployeeExcel';
+  return this.http.post(url,file)
+}
 }

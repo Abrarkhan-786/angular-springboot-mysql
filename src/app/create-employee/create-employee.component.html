@@ -4,7 +4,7 @@
         <div class="row">
             <mat-form-field appearance="outline" floatLabel="always" class="pr-4" class="col-6">
                 <mat-label>Id</mat-label>
-                <input matInput placeholder="Id" name="id" formControlName="id" [readonly]="true">
+                <input matInput placeholder="Id" name="id" formControlName="" [readonly]="true">
             </mat-form-field>
 
             <mat-form-field appearance="outline" floatLabel="always" class="pr-4" class="col-6">
@@ -54,7 +54,7 @@
             </mat-form-field>
             <div class="pt-2 pl-3">
                 <mat-label>Is Employee Senior</mat-label>
-                <mat-slide-toggle class="ml-2" [checked]="true" name="isSenior" formControlName="isSenior">
+                <mat-slide-toggle class="ml-2" [checked]="true" name="senior" formControlName="senior">
                 </mat-slide-toggle>
             </div>
         </div>
@@ -71,10 +71,10 @@
         </div>
         <div class="d-flex justify-content-start">
             <div class="">
-                <button mat-raised-button color="primary" (click)="save()">Save</button>
+                <button mat-raised-button color="primary" [disabled]="employeeForm.invalid" (click)="save()" >Save</button>
             </div>
             <div class="ml-3">
-                <button mat-raised-button color="warn" type="button" [disabled]="employeeForm.invalid" (click)="resetForm()">Reset</button>
+                <button mat-raised-button color="warn" type="button"  (click)="resetForm()">Reset</button>
             </div>
         </div>
     </form>

@@ -46,11 +46,13 @@ export class UploadFileComponent implements OnInit {
   }
 
   onFileChange(event:any) {
-    const reader = new FileReader();
     if(event.target.files && event.target.files.length) {
       console.log(event.target.files)
       const [file] = event.target.files;
+      // to send to backened
       [this.selectedFile]=event.target.files
+      // File preveiw
+      const reader = new FileReader();
       reader.readAsDataURL(file);//read file as data url
       console.log(file)
       reader.onload = () => { // called once readAsDataURL is completed
@@ -135,6 +137,15 @@ export class UploadFileComponent implements OnInit {
       }else{
         this.snackbarService.openErrorSnackBar(data.message)
       }
+     })
+   
+
+  }
+
+  downloadAttachment(id:string,fileName:string,fileType:string):void{
+    this.service.getFile(id).subscribe((data)=>{
+      const blob = new Blob([data], { type:fileType});
+      FileSaver.saveAs(blob,fileName)
      })
    
 

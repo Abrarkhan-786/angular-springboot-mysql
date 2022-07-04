@@ -31,7 +31,7 @@ export class EditEmployeeComponent implements OnInit {
       email:new FormControl('',[Validators.required,Validators.pattern(regix_patterns.EMAIL)]),
       department:new FormControl('',[Validators.required,Validators.pattern(regix_patterns.ONLY_ALPHA_NUMERIC_WITH_SPACE)]),
       salary:new FormControl('',[Validators.required,Validators.pattern(regix_patterns.ONLY_NUMERIC_FLOAT)]),
-      isSenior:new FormControl('',[])
+      senior:new FormControl(true,[])
     })
 
   ngOnInit(): void {
@@ -52,7 +52,7 @@ export class EditEmployeeComponent implements OnInit {
             'email':this.employee.email,
             'department':this.employee.department,
             'salary':String(this.employee.salary),
-            'isSenior':String(this.employee.isSenior)
+            'senior':this.employee.senior
            });
           
       }else{
@@ -72,7 +72,7 @@ export class EditEmployeeComponent implements OnInit {
     model.department=(this.employeeForm.value.department)?this.employeeForm.value.department:null;
     model.salary=(this.employeeForm.value.salary)?Number(this.employeeForm.value.salary):null
     model.email=(this.employeeForm.value.email)?this.employeeForm.value.email:null;
-    model.isSenior=Boolean(this.employeeForm.value.isSenior)
+    model.senior=this.employeeForm.value.senior;
     console.log(model)
 
     this.service.updateEmployee(model).subscribe((data) => { 

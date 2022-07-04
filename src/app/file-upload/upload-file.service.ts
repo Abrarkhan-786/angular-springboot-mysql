@@ -34,6 +34,11 @@ export class UploadFileService {
  
   getAttachment(id:string):Observable<any>{
     const url = this.backenedUrl + 'attachment/getAttachment/'+id;
-    return this.http.get(url)
+    return this.http.get(url )
+  }
+
+  getFile(id:string):Observable<any>{
+    const url = this.backenedUrl + 'getFile/downloadAttachment/'+id;
+    return this.http.get(url,{ responseType:'blob' })
   }
 }

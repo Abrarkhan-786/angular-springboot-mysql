@@ -29,8 +29,10 @@
                 <td>{{file.fileName}}</td>
                 <td>{{file.fileType}}</td>
                 <td style="">
+                  
                    <i class="fa-solid fa-2x fa-trash ml-3 mb-2 text-danger cursor-pointer" (click)="deleteFile(file.id)"></i>
-                   <i class="fa-solid fa-2x fa-download cursor-pointer ml-3 text-primary" (click)="downloadFile(file.id)"></i>
+                   <i class="fa-solid fa-2x fa-download cursor-pointer ml-3 text-primary" (click)="downloadAttachment(file.id,file.fileName,file.fileType)"></i>
+                   <!-- <i class="fa-solid fa-2x fa-download cursor-pointer ml-3 text-primary" (click)="downloadFile(file.id)"></i> -->
                 </td>
               </tr>
           </tbody>

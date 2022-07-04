@@ -1,8 +1,28 @@
 <div class="p-4">
     <div>
-        <div class="mt-4">
-            <button class=" mt-4" mat-raised-button color="primary" (click)="backToList()">Add</button>
-            
+        <div class="mt-2 row" >
+            <div class="col-6">
+              <button class=" mt-5 mr-2" mat-raised-button color="primary" (click)="backToAddForm()">Add</button>
+              <button class=" mt-5" mat-raised-button  (click)="downloadEmployeeReport()"> <i class="fa-solid  fa-download cursor-pointer mr-2  text-primary"></i>Download</button>
+              <a mat-stroked-button color="warn" target="_blank" href="http://localhost:8280/springbootMysqlCrud/employee/downloadEmployeeExcelReport" class="text-success ml-2">Download</a>
+            </div>
+            <div  class="col-6" >
+             <form  [formGroup]="uploadForm" (ngSubmit)="uploadExcelFile()">
+              <div  class="d-flex justify-content-end">
+                <div class=" form-group mt-5 mr-2" >
+                  <input type="file" class="form-control" (change)="onFileSelect($event)" name="fileSource" >
+                  <div *ngIf="uploadForm.get('fileName')!.invalid  &&  uploadForm.get('fileName')!.touched ">
+                      <small class="form-text text-danger" *ngIf="uploadForm.controls['fileName'].errors?.['fileInvalid']">
+                          Only Excel file is Allowed.
+                       </small>
+                  </div>
+                </div>
+                <div>
+                  <button class=" mt-5" mat-raised-button color="accent" [disabled]="uploadForm.invalid" > <i class="fa-solid  fa-upload cursor-pointer mr-2 "></i>Upload</button>
+                </div>
+              </div>
+             </form>
+            </div>
         </div>
         <h1 class=" heading ">Employee List</h1>
     <!-- <mat-form-field appearance="standard">
@@ -75,3 +95,5 @@
      <div *ngIf="dataSource==null"><h1 class="text-center">No Data To Display</h1></div>
     </div>
 </div>
+
+
